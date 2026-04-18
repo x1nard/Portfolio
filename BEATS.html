@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Xinard's portfolio showcasing artwork, videos, and music. Explore visual and audio creations.">
+    <title>Beats</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            padding: 50px 0;
+            background-color: #1a1a1a;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin: 40px 0 20px;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+            max-width: 1200px;
+        }
+        .media-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .media-item, .audio-player {
+            width: calc(33.333% - 20px);
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .media-item:hover img, .media-item:hover video {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+        .media-item img, .media-item video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .audio-player {
+            display: flex;
+            align-items: center;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            gap: 20px;
+            max-width: 500px;
+        }
+        .track-cover {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+        }
+        .play-pause-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .play-pause-btn:hover {
+            transform: scale(1.2);
+        }
+        .track-info {
+            flex-grow: 1;
+        }
+        .track-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress {
+            width: 0;
+            height: 100%;
+            background: #00ffcc;
+            transition: width 0.1s;
+        }
+.back-button {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .media-item, .audio-player {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Beats</h1>
+</header>
+
+<div class="container">
+
+    <div class="media-grid">
+        <div class="audio-player">
+            <img src="YO.jpg" alt="Track Cover" class="track-cover">
+            <button class="play-pause-btn">▶</button>
+            <div class="track-info">
+                <div class="track-title">GIMME</div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <audio src="dalamozgi  171BPM @s3rrgery.mp3"></audio>
+        </div>
+        <div class="audio-player">
+            <img src="WM.jpg" alt="Track Cover" class="track-cover">
+            <button class="play-pause-btn">▶</button>
+            <div class="track-info">
+                <div class="track-title">WINR</div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <audio src="DJ FAP 140BPM Bm @s3rrgery.mp3"></audio>
+        </div>
+        <div class="audio-player">
+            <img src="TY.jpg" alt="Track Cover" class="track-cover">
+            <button class="play-pause-btn">▶</button>
+            <div class="track-info">
+                <div class="track-title">HANGOVER</div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <audio src="HANGOVER.mp3"></audio>
+        </div>
+        
+<footer>
+    <a href="index.html" class="back-button">Back to Home</a>
+    <p>&copy; 2026 </p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const players = document.querySelectorAll('.audio-player');
+
+    players.forEach(player => {
+        const audio = player.querySelector('audio');
+        const playPauseBtn = player.querySelector('.play-pause-btn');
+        const progress = player.querySelector('.progress');
+
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸';
+                pauseOtherAudios(audio);  // Останавливаем другие аудио
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = `${percent}%`;
+        });
+
+        audio.addEventListener('ended', () => {
+            playPauseBtn.textContent = '▶';
+            progress.style.width = '0';
+        });
+    });
+
+    function pauseOtherAudios(currentAudio) {
+        players.forEach(player => {
+            const audio = player.querySelector('audio');
+            const playPauseBtn = player.querySelector('.play-pause-btn');
+            if (audio !== currentAudio) {
+                audio.pause();
+                audio.currentTime = 0;
+                playPauseBtn.textContent = '▶';
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>
+
+
